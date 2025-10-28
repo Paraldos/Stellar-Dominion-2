@@ -1,6 +1,6 @@
 class main {
   constructor() {
-    const app = document.querySelector("#app");
+    const app = document.querySelector("body");
 
     if (app) {
       app.innerHTML = `
