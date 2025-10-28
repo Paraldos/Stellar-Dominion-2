@@ -1,13 +1,5 @@
-class main {
-  constructor() {
-    const app = document.querySelector("body");
+import { createApp } from 'vue'
+import './style.css'
+import App from './App.vue'
 
-    if (app) {
-      app.innerHTML = `
-		<div>bert</div>
-	`;
-    }
-  }
-}
-
-new main();
+createApp(App).mount('#app')
