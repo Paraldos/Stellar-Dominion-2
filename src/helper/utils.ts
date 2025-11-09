@@ -6,3 +6,8 @@ export function shuffleArray<T>(array: T[]): T[] {
   }
   return result;
 }
+
+export function getRandomArrayElement<T>(array: T[]): T {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}

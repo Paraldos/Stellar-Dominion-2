@@ -42,7 +42,6 @@ export default class Map {
   }
 
   addStars() {
-    this.k.loadSprite("star", "/public/star.png");
     this.gameData.stars.forEach((star) => {
       new StarObject(star, this.k, this.gameData.cellSize);
     });

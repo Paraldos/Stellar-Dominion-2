@@ -1,29 +1,59 @@
-import type { KAPLAYCtx } from "kaplay";
+import type { KAPLAYCtx, GameObj } from "kaplay";
 import StarData from "../../data/starData";
 
 export default class StarObject {
+  starData: StarData;
+  k: KAPLAYCtx;
+  fieldSize: { x: number; y: number };
+  star: GameObj;
+  starBorder: GameObj;
+
   constructor(
     starData: StarData,
     k: KAPLAYCtx,
     fieldSize: { x: number; y: number }
   ) {
-    const posX = starData.column * fieldSize.x + fieldSize.x / 2;
-    const posY = starData.row * fieldSize.y + fieldSize.y / 2;
-    const star = k.add([
-      k.sprite("star"),
-      k.pos(posX, posY),
-      k.color("#d9ffe2"),
-      k.anchor("center"),
-      k.area(),
+    this.starData = starData;
+    this.k = k;
+    this.fieldSize = fieldSize;
+    this.star = this.setupStar();
+    this.starBorder = this.setupStarBorder();
+    this.star.onClick(() => this.onClick());
+    this.star.onHover(() => this.onHover());
+    this.star.onHoverEnd(() => this.onHoverEnd());
+  }
+
+  setupStar(): GameObj {
+    const posX = this.starData.column * this.fieldSize.x + this.fieldSize.x / 2;
+    const posY = this.starData.row * this.fieldSize.y + this.fieldSize.y / 2;
+    this.k.loadSprite("star", "/public/star.png");
+    return this.k.add([
+      this.k.sprite("star"),
+      this.k.pos(posX, posY),
+      this.k.color(this.starData.color),
+      this.k.anchor("center"),
+      this.k.area(),
     ]);
-    star.onClick(() => {
-      k.debug.log("click");
-    });
-    star.onHover(() => {
-      star.color = k.rgb(0, 0, 255);
-    });
-    star.onHoverEnd(() => {
-      star.color = k.rgb();
-    });
+  }
+
+  setupStarBorder(): GameObj {
+    this.k.loadSprite("starBorder", "/public/starBorder.png");
+    return this.star.add([
+      this.k.sprite("starBorder"),
+      this.k.anchor("center"),
+      this.k.opacity(0),
+    ]);
+  }
+
+  onClick() {
+    this.k.debug.log("click");
+  }
+
+  onHover() {
+    this.starBorder.opacity = 1;
+  }
+
+  onHoverEnd() {
+    this.starBorder.opacity = 0;
   }
 }
