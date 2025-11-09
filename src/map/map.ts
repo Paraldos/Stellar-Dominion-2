@@ -19,10 +19,12 @@ export default class Map {
   initMap() {
     if (!this.map) return;
     kaplay({
-      background: "#d46eb3",
+      background: `#000000`,
       scale: 2,
       canvas: this.map,
     });
     this.map.classList.add("visible");
+
+    const star = add([rect(32, 32), pos(10, 10), "shape"]);
   }
 }
