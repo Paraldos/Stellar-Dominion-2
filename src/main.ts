@@ -17,6 +17,7 @@ class Main {
     });
     this.loadBtn?.addEventListener("click", () => {
       const storageCounter = localStorage.getItem("stellarDominionCounter");
+      if (storageCounter == null) return;
       this.counter = parseFloat(storageCounter);
       this.updateCounter();
     });
