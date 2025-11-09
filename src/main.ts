@@ -1,24 +1,31 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+class Main {
+  display = document.querySelector(".display");
+  plusOne = document.querySelector(".plusOne");
+  saveBtn = document.querySelector(".saveBtn");
+  loadBtn = document.querySelector(".loadBtn");
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+  counter = 0;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+  constructor() {
+    this.updateCounter();
+    this.plusOne?.addEventListener("click", () => {
+      this.counter += 1;
+      this.updateCounter();
+    });
+    this.saveBtn?.addEventListener("click", () => {
+      localStorage.setItem("stellarDominionCounter", String(this.counter));
+    });
+    this.loadBtn?.addEventListener("click", () => {
+      const storageCounter = localStorage.getItem("stellarDominionCounter");
+      this.counter = parseFloat(storageCounter);
+      this.updateCounter();
+    });
+  }
+
+  updateCounter() {
+    if (!this.display) return;
+    this.display.innerHTML = `Counter: ${this.counter}`;
+  }
+}
+
+new Main();
