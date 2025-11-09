@@ -1,4 +1,4 @@
-export default class Star {
+export default class StarData {
   title = "star";
   field: number;
   row = 0;

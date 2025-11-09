@@ -1,11 +1,11 @@
 import "./game.css";
 import Navbar from "../navbar/navbar";
-import Sector from "../data/sector";
+import SectorData from "../data/sectorData";
 import Map from "../map/map";
 import Research from "../research/research";
 
 export default class Game {
-  sector = new Sector();
+  sectorData = new SectorData();
 
   constructor() {
     document.body.innerHTML = `
@@ -17,7 +17,7 @@ export default class Game {
 		</div>
 	</div>`;
     new Navbar();
-    new Map(this.sector);
+    new Map(this.sectorData);
     new Research();
   }
 }
