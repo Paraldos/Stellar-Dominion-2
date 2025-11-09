@@ -1,20 +1,30 @@
+import "./map.css";
 import kaplay from "kaplay";
 
 export default class Map {
   content = document.querySelector(".content");
-  canvas = document.createElement("canvas");
+  pages = document.querySelectorAll(".page");
+  map: HTMLCanvasElement | null = document.querySelector(".map");
 
   constructor() {
-    if (!this.content) return;
-    this.content.innerHTML = "";
-    this.content.appendChild(this.canvas);
+    this.initMap();
+    document.addEventListener("openMap", () => this.onOpenMap());
+  }
 
+  onOpenMap() {
+    this.pages.forEach((el) => el.classList.remove("visible"));
+    this.map?.classList.add("visible");
+  }
+
+  initMap() {
+    if (!this.map) return;
     kaplay({
       width: 200,
       height: 200,
       background: "#d46eb3",
       scale: 2,
-      canvas: this.canvas,
+      canvas: this.map,
     });
+    this.map.classList.add("visible");
   }
 }
