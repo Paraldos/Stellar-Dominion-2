@@ -8,7 +8,7 @@ export default class Map {
   map: HTMLCanvasElement | null = document.querySelector(".map");
   sector: Sector;
   k: ReturnType<typeof kaplay>;
-  mapSize = { x: 800, y: 600 };
+  mapSize = { x: 600, y: 400 };
   fieldSize = { x: 0, y: 0 };
 
   constructor(sector: Sector) {
@@ -19,6 +19,7 @@ export default class Map {
     };
     this.k = this.initKaplay();
     this.map?.classList.add("visible");
+    this.addBackground();
     this.addStars();
     document.addEventListener("openMap", () => this.onOpenMap());
   }
@@ -30,7 +31,7 @@ export default class Map {
     return kaplay({
       width: this.mapSize.x,
       height: this.mapSize.y,
-      background: "#31b0b0",
+      background: "#000000",
       letterbox: true,
       canvas: this.map,
       global: false,
@@ -42,15 +43,21 @@ export default class Map {
     this.map?.classList.add("visible");
   }
 
+  addBackground() {
+    this.k.loadSprite("background", "/public/background.png");
+    this.k.add([this.k.sprite("background"), this.k.anchor("center")]);
+  }
+
   addStars() {
     this.k.loadSprite("star", "/public/star.png");
     this.sector.stars.forEach((star) => {
-      const posX = star.column * this.fieldSize.x + 25;
-      const posY = star.row * this.fieldSize.y + 25;
+      const posX = star.column * this.fieldSize.x + this.fieldSize.x / 2;
+      const posY = star.row * this.fieldSize.y + this.fieldSize.y / 2;
       this.k.add([
         this.k.sprite("star"),
         this.k.pos(posX, posY),
         this.k.color("#d9ffe2"),
+        this.k.anchor("center"),
       ]);
     });
   }
