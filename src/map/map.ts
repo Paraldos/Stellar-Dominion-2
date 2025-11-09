@@ -1,6 +1,7 @@
 import "./map.css";
 import kaplay from "kaplay";
 import Sector from "../data/sector";
+import Star from "../data/star";
 
 export default class Map {
   content = document.querySelector(".content");
@@ -31,10 +32,10 @@ export default class Map {
     return kaplay({
       width: this.mapSize.x,
       height: this.mapSize.y,
-      background: "#000000",
       letterbox: true,
       canvas: this.map,
       global: false,
+      scale: 20,
     });
   }
 
@@ -50,15 +51,27 @@ export default class Map {
 
   addStars() {
     this.k.loadSprite("star", "/public/star.png");
-    this.sector.stars.forEach((star) => {
-      const posX = star.column * this.fieldSize.x + this.fieldSize.x / 2;
-      const posY = star.row * this.fieldSize.y + this.fieldSize.y / 2;
-      this.k.add([
-        this.k.sprite("star"),
-        this.k.pos(posX, posY),
-        this.k.color("#d9ffe2"),
-        this.k.anchor("center"),
-      ]);
+    this.sector.stars.forEach((star) => this.addStar(star));
+  }
+
+  addStar(starData: Star) {
+    const posX = starData.column * this.fieldSize.x + this.fieldSize.x / 2;
+    const posY = starData.row * this.fieldSize.y + this.fieldSize.y / 2;
+    const star = this.k.add([
+      this.k.sprite("star"),
+      this.k.pos(posX, posY),
+      this.k.color("#d9ffe2"),
+      this.k.anchor("center"),
+      this.k.area(),
+    ]);
+    star.onClick(() => {
+      this.k.debug.log("bert");
+    });
+    star.onHover(() => {
+      star.color = this.k.rgb(0, 0, 255);
+    });
+    star.onHoverEnd(() => {
+      star.color = this.k.rgb();
     });
   }
 }
