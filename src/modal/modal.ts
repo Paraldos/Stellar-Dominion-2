@@ -7,6 +7,7 @@ export default class Modal {
   constructor() {
     this.modal = document.createElement("div");
     this.modal.classList = "modal";
+    this.modal.addEventListener("click", () => this.modal.remove());
     document.body.appendChild(this.modal);
 
     this.modalContent = document.createElement("div");

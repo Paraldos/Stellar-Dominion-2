@@ -1,5 +1,6 @@
 import type { KAPLAYCtx, GameObj } from "kaplay";
 import StarData from "../../data/starData";
+import StarModal from "../starModal/starModal";
 
 export default class StarObject {
   starData: StarData;
@@ -44,7 +45,7 @@ export default class StarObject {
   }
 
   onClick() {
-    this.k.debug.log("click");
+    new StarModal();
   }
 
   onHover() {

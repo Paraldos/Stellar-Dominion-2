@@ -1,0 +1,15 @@
+.modal {
+  background-color: var(--modalBackground);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: var(--modalContentBackground);
+  border: 5px solid var(--modalContentBorder);
+  min-width: 100px;
+  min-height: 100px;
+}
