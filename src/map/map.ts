@@ -8,6 +8,10 @@ export default class Map {
   map: HTMLCanvasElement | null = document.querySelector(".map");
   sector: Sector;
   kaplay: ReturnType<typeof kaplay>;
+  mapSize = {
+    x: 800,
+    y: 600,
+  };
 
   constructor(sector: Sector) {
     this.sector = sector;
@@ -22,8 +26,10 @@ export default class Map {
       throw new Error("Canvas element with class '.map' not found");
     }
     return kaplay({
+      width: this.mapSize.x,
+      height: this.mapSize.y,
+      letterbox: true,
       background: "#000000",
-      scale: 2,
       canvas: this.map,
       global: false,
     });
@@ -36,8 +42,15 @@ export default class Map {
 
   addStars() {
     const { add, circle, pos, color } = this.kaplay;
+    const fieldSize = {
+      x: this.mapSize.x / this.sector.rows,
+      y: this.mapSize.y / this.sector.columns,
+    };
+
     this.sector.stars.forEach((star) => {
-      add([circle(16), pos(star.column * 50, star.row * 50), color("#d9ffe2")]);
+      const posX = star.column * fieldSize.x + 25;
+      const posY = star.row * fieldSize.y + 25;
+      add([circle(8), pos(posX, posY), color("#d9ffe2")]);
     });
   }
 }
