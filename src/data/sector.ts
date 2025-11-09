@@ -1,16 +1,27 @@
 import Star from "./star.ts";
+import { shuffleArray } from "../helper/utils.ts";
 
 export default class Sector {
-  rows = 5;
-  columns = 5;
+  rows = 10;
+  columns = 10;
   fields = this.rows * this.columns;
-  stars: Star[];
+  amountOfStars = Math.ceil(this.fields / 4);
+  stars: Star[] = [];
 
   constructor() {
-    this.stars = [];
-    for (let i = 0; i < this.fields; i++) {
-      this.stars.push(new Star(i));
-    }
-    console.log(this.stars);
+    this.getStars();
+  }
+
+  getStars() {
+    const prep = shuffleArray([
+      ...Array(this.amountOfStars).fill(1),
+      ...Array(this.fields - this.amountOfStars).fill(0),
+    ]);
+    prep.forEach((el, i) => {
+      if (el == 0) return;
+      const row = Math.floor(i / this.columns);
+      const column = i % this.columns;
+      this.stars.push(new Star(i, row, column));
+    });
   }
 }

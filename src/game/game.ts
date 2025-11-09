@@ -17,7 +17,7 @@ export default class Game {
 		</div>
 	</div>`;
     new Navbar();
-    new Map();
+    new Map(this.sector);
     new Research();
   }
 }

@@ -1,14 +1,32 @@
 import "./map.css";
 import kaplay from "kaplay";
+import Sector from "../data/sector";
 
 export default class Map {
   content = document.querySelector(".content");
   pages = document.querySelectorAll(".page");
   map: HTMLCanvasElement | null = document.querySelector(".map");
+  sector: Sector;
+  kaplay: ReturnType<typeof kaplay>;
 
-  constructor() {
-    this.initMap();
+  constructor(sector: Sector) {
+    this.sector = sector;
+    this.kaplay = this.initKaplay();
+    this.map?.classList.add("visible");
+    this.addStars();
     document.addEventListener("openMap", () => this.onOpenMap());
+  }
+
+  initKaplay(): ReturnType<typeof kaplay> {
+    if (!this.map) {
+      throw new Error("Canvas element with class '.map' not found");
+    }
+    return kaplay({
+      background: "#000000",
+      scale: 2,
+      canvas: this.map,
+      global: false,
+    });
   }
 
   onOpenMap() {
@@ -16,15 +34,10 @@ export default class Map {
     this.map?.classList.add("visible");
   }
 
-  initMap() {
-    if (!this.map) return;
-    kaplay({
-      background: `#000000`,
-      scale: 2,
-      canvas: this.map,
+  addStars() {
+    const { add, circle, pos, color } = this.kaplay;
+    this.sector.stars.forEach((star) => {
+      add([circle(16), pos(star.column * 50, star.row * 50), color("#d9ffe2")]);
     });
-    this.map.classList.add("visible");
-
-    const star = add([rect(32, 32), pos(10, 10), "shape"]);
   }
 }
