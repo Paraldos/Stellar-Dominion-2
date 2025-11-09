@@ -2,8 +2,8 @@ import Star from "./star.ts";
 import { shuffleArray } from "../helper/utils.ts";
 
 export default class Sector {
-  rows = 10;
-  columns = 10;
+  rows = 8;
+  columns = 8;
   fields = this.rows * this.columns;
   amountOfStars = Math.ceil(this.fields / 4);
   stars: Star[] = [];
