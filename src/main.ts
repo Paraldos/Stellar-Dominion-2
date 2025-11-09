@@ -1,31 +1,14 @@
-class Main {
-  display = document.querySelector(".display");
-  plusOne = document.querySelector(".plusOne");
-  saveBtn = document.querySelector(".saveBtn");
-  loadBtn = document.querySelector(".loadBtn");
+import "./style.css";
+import "./variables.css";
+import Navbar from "./navbar/navbar";
+import Game from "./game/game";
 
-  counter = 0;
+class Main {
+  game: Game;
 
   constructor() {
-    this.updateCounter();
-    this.plusOne?.addEventListener("click", () => {
-      this.counter += 1;
-      this.updateCounter();
-    });
-    this.saveBtn?.addEventListener("click", () => {
-      localStorage.setItem("stellarDominionCounter", String(this.counter));
-    });
-    this.loadBtn?.addEventListener("click", () => {
-      const storageCounter = localStorage.getItem("stellarDominionCounter");
-      if (storageCounter == null) return;
-      this.counter = parseFloat(storageCounter);
-      this.updateCounter();
-    });
-  }
-
-  updateCounter() {
-    if (!this.display) return;
-    this.display.innerHTML = `Counter: ${this.counter}`;
+    new Navbar();
+    this.game = new Game();
   }
 }
 
