@@ -1,6 +1,6 @@
 import "./map.css";
 import kaplay from "kaplay";
-import SectorData from "../data/sectorData";
+import GameData from "../data/gameData";
 import Background from "./background/background";
 import StarObject from "./starObject/starObject";
 
@@ -8,17 +8,13 @@ export default class Map {
   content = document.querySelector(".content");
   pages = document.querySelectorAll(".page");
   map: HTMLCanvasElement | null = document.querySelector(".map");
-  sectorData: SectorData;
+  gameData: GameData;
   k: ReturnType<typeof kaplay>;
   mapSize = { x: 600, y: 400 };
   fieldSize = { x: 0, y: 0 };
 
-  constructor(sectorData: SectorData) {
-    this.sectorData = sectorData;
-    this.fieldSize = {
-      x: this.mapSize.x / this.sectorData.rows,
-      y: this.mapSize.y / this.sectorData.columns,
-    };
+  constructor(gameData: GameData) {
+    this.gameData = gameData;
     this.k = this.initKaplay();
     this.map?.classList.add("visible");
     new Background(this.k);
@@ -31,8 +27,8 @@ export default class Map {
       throw new Error("Canvas element with class '.map' not found");
     }
     return kaplay({
-      width: this.mapSize.x,
-      height: this.mapSize.y,
+      width: this.gameData.mapSize.x,
+      height: this.gameData.mapSize.y,
       letterbox: true,
       canvas: this.map,
       global: false,
@@ -47,8 +43,8 @@ export default class Map {
 
   addStars() {
     this.k.loadSprite("star", "/public/star.png");
-    this.sectorData.stars.forEach((star) => {
-      new StarObject(star, this.k, this.fieldSize);
+    this.gameData.stars.forEach((star) => {
+      new StarObject(star, this.k, this.gameData.cellSize);
     });
   }
 }
