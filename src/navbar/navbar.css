@@ -1,28 +1,29 @@
 .navbar {
-  background-color: var(--2);
-  color: var(--1);
+  background-color: var(--navbar__background);
   width: 100%;
   height: var(--nav-height);
-  padding: 10px;
-  border-bottom: 5px solid var(--6);
+  border-bottom: var(--nav-spacing) solid var(--navbar__border);
 
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: var(--nav-spacing);
+  padding: var(--nav-spacing);
 }
 
 li {
-  background-color: var(--6);
+  background-color: var(--button__background);
+  color: var(--button__text);
   height: 100%;
   padding: 0 50px;
   display: flex;
   align-items: center;
   text-transform: uppercase;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 li:hover {
   cursor: pointer;
-  background-color: var(--7);
+  background-color: var(--button__background--hover);
+  color: var(--button__text--hover);
 }

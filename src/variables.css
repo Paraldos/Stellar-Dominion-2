@@ -1,18 +1,16 @@
 :root {
-  --1: #000924;
-  --2: #041b38;
-  --3: #093659;
-  --4: #145d87;
-  --5: #228399;
-  --6: #31b0b0;
-  --7: #46cfb3;
-  --8: #73f0c6;
-  --9: #abffd1;
-  --10: #d9ffe2;
+  --button__background: #212121;
+  --button__text: #eeeeee;
+  --button__background--hover: #eeeeee;
+  --button__text--hover: #212121;
+
+  --navbar__background: #01579b;
+  --navbar__border: #212121;
 
   --modalBackground: rgba(0, 0, 0, 0.2);
   --modalContentBackground: #eeeeee;
   --modalContentBorder: #212121;
 
   --nav-height: 75px;
+  --nav-spacing: 5px;
 }
