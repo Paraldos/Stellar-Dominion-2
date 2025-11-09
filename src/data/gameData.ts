@@ -11,11 +11,11 @@ export default class GameData {
   stars: StarData[] = [];
 
   constructor() {
-    this.getStars();
     this.cellSize = {
       x: this.mapSize.x / this.rows,
       y: this.mapSize.y / this.columns,
     };
+    this.getStars();
   }
 
   getStars() {
@@ -27,7 +27,7 @@ export default class GameData {
       if (el == 0) return;
       const row = Math.floor(i / this.columns);
       const column = i % this.columns;
-      this.stars.push(new StarData(i, row, column));
+      this.stars.push(new StarData(i, row, column, this.cellSize));
     });
   }
 }

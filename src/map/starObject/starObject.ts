@@ -24,12 +24,10 @@ export default class StarObject {
   }
 
   setupStar(): GameObj {
-    const posX = this.starData.column * this.fieldSize.x + this.fieldSize.x / 2;
-    const posY = this.starData.row * this.fieldSize.y + this.fieldSize.y / 2;
     this.k.loadSprite("star", "/public/star.png");
     return this.k.add([
       this.k.sprite("star"),
-      this.k.pos(posX, posY),
+      this.k.pos(this.starData.posX, this.starData.posY),
       this.k.color(this.starData.color),
       this.k.anchor("center"),
       this.k.area(),

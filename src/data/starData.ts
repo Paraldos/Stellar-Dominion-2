@@ -1,18 +1,31 @@
-import { getRandomArrayElement } from "../helper/utils";
+import {
+  getRandomArrayElement,
+  getRandomNumberFromRange,
+} from "../helper/utils";
 
 const POSSIBLE_STAR_COLORS = ["#fff176", "#fff176", "#29b6f6", "#d01716"];
 
 export default class StarData {
   title = "star";
-  field: number;
-  row = 0;
-  column = 0;
+  index: number;
   color: string;
+  posX: number;
+  posY: number;
 
-  constructor(index: number, row: number, column: number) {
-    this.field = index;
-    this.row = row;
-    this.column = column;
+  constructor(
+    index: number,
+    row: number,
+    column: number,
+    cellSize: {
+      x: number;
+      y: number;
+    }
+  ) {
+    this.index = index;
     this.color = getRandomArrayElement(POSSIBLE_STAR_COLORS);
+    this.posX = column * cellSize.x + cellSize.x / 2;
+    this.posX += getRandomNumberFromRange(-cellSize.x / 4, cellSize.x / 4);
+    this.posY = row * cellSize.y + cellSize.y / 2;
+    this.posY += getRandomNumberFromRange(-cellSize.y / 4, cellSize.y / 4);
   }
 }
