@@ -45,7 +45,7 @@ export default class StarObject {
   }
 
   onClick() {
-    new StarModal();
+    new StarModal(this.starData);
   }
 
   onHover() {
