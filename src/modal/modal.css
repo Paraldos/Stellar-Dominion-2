@@ -9,7 +9,33 @@
 
 .modalContent {
   background-color: var(--modalContentBackground);
-  border: 5px solid var(--modalContentBorder);
-  min-width: 100px;
-  min-height: 100px;
+  min-width: 250px;
+  min-height: 250px;
+  border: 5px solid var(--modalBorder);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.modalHeader {
+  width: 100%;
+  height: 35px;
+  background-color: var(--modalHeaderBackground);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.modalCloseBtn {
+  background-color: var(--modalCloseBtn);
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}
+
+.modalCloseBtn:hover {
+  cursor: pointer;
 }

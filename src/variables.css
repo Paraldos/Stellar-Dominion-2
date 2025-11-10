@@ -8,8 +8,10 @@
   --navbar__border: #00acfc;
 
   --modalBackground: rgba(0, 0, 0, 0.5);
-  --modalContentBackground: #01579b;
-  --modalContentBorder: #212121;
+  --modalContentBackground: white;
+  --modalHeaderBackground: #00acfc;
+  --modalBorder: #00acfc;
+  --modalCloseBtn: red;
 
   --nav-height: 75px;
   --nav-spacing: 5px;
