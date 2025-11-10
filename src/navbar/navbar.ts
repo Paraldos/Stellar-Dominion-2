@@ -1,33 +1,21 @@
 import "./navbar.css";
+import SaveLoadmodal from "../saveLoadModal/saveLoadModal";
 
 export default class Navbar {
   navbar = document.querySelector(".navbar");
+  map;
+  saveLoad;
 
   constructor() {
-    this.addBtn("Map");
-    this.addBtn("Research");
-    this.addBtn("News");
+    this.map = this.addBtn("Map");
+    this.saveLoad = this.addBtn("Save / Load");
+    this.saveLoad.addEventListener("click", () => new SaveLoadmodal());
   }
 
-  addBtn(title: string) {
+  addBtn(text: string): HTMLElement {
     const li = document.createElement("li");
-    li.innerHTML = title;
-    li.addEventListener("click", () => this.onClickLi(title));
-    document.addEventListener("openPage", (event) =>
-      this.onOpenPage(event as CustomEvent, li)
-    );
+    li.innerHTML = text;
     this.navbar?.appendChild(li);
-  }
-
-  onClickLi(title: string) {
-    document.dispatchEvent(
-      new CustomEvent("openPage", {
-        detail: { window: title },
-      })
-    );
-  }
-
-  onOpenPage(event: CustomEvent, li: HTMLElement) {
-    li.classList.toggle("active", event.detail.window === li.innerHTML);
+    return li;
   }
 }

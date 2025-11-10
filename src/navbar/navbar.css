@@ -6,9 +6,11 @@
 
   display: flex;
   justify-content: center;
+  gap: var(--nav-spacing);
+  padding: var(--nav-spacing);
 }
 
-li {
+.navbar li {
   background-color: var(--button__background);
   color: var(--button__text);
   height: 100%;
@@ -17,10 +19,11 @@ li {
   align-items: center;
   text-transform: uppercase;
   font-weight: bold;
+  border-radius: 20px;
 }
 
-li.active,
-li:hover {
+.navbar li.active,
+.navbar li:hover {
   cursor: pointer;
   background-color: var(--button__background--hover);
   color: var(--button__text--hover);

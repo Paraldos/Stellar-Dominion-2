@@ -1,0 +1,7 @@
+.saveLoadModal__slotsContainer {
+  padding: 15px;
+}
+
+.saveLoadModal__slot {
+  display: flex;
+}

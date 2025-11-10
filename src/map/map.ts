@@ -18,9 +18,6 @@ export default class Map {
     this.map?.classList.add("visible");
     new Background(this.k);
     this.addStars();
-    document.addEventListener("openPage", (event) =>
-      this.onOpenMap(event as CustomEvent)
-    );
   }
 
   initKaplay(): ReturnType<typeof kaplay> {
@@ -35,10 +32,6 @@ export default class Map {
       global: false,
       scale: 20,
     });
-  }
-
-  onOpenMap(event: CustomEvent) {
-    this.map?.classList.toggle("visible", event.detail.window === "Map");
   }
 
   addStars() {
