@@ -6,7 +6,6 @@ import StarObject from "./starObject/starObject";
 
 export default class Map {
   content = document.querySelector(".content");
-  pages = document.querySelectorAll(".page");
   map: HTMLCanvasElement | null = document.querySelector(".map");
   gameData: GameData;
   k: ReturnType<typeof kaplay>;
@@ -19,7 +18,9 @@ export default class Map {
     this.map?.classList.add("visible");
     new Background(this.k);
     this.addStars();
-    document.addEventListener("openMap", () => this.onOpenMap());
+    document.addEventListener("openPage", (event) =>
+      this.onOpenMap(event as CustomEvent)
+    );
   }
 
   initKaplay(): ReturnType<typeof kaplay> {
@@ -36,9 +37,8 @@ export default class Map {
     });
   }
 
-  onOpenMap() {
-    this.pages.forEach((el) => el.classList.remove("visible"));
-    this.map?.classList.add("visible");
+  onOpenMap(event: CustomEvent) {
+    this.map?.classList.toggle("visible", event.detail.window === "Map");
   }
 
   addStars() {

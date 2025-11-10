@@ -6,8 +6,6 @@
 
   display: flex;
   justify-content: center;
-  gap: var(--nav-spacing);
-  padding: var(--nav-spacing);
 }
 
 li {
@@ -19,9 +17,9 @@ li {
   align-items: center;
   text-transform: uppercase;
   font-weight: bold;
-  border-radius: 50px;
 }
 
+li.active,
 li:hover {
   cursor: pointer;
   background-color: var(--button__background--hover);

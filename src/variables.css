@@ -1,11 +1,11 @@
 :root {
-  --button__background: #212121;
-  --button__text: #eeeeee;
-  --button__background--hover: #eeeeee;
-  --button__text--hover: #212121;
+  --button__background: white;
+  --button__text: #212121;
+  --button__background--hover: #00acfc;
+  --button__text--hover: white;
 
-  --navbar__background: #01579b;
-  --navbar__border: #212121;
+  --navbar__background: white;
+  --navbar__border: #00acfc;
 
   --modalBackground: rgba(0, 0, 0, 0.5);
   --modalContentBackground: #01579b;

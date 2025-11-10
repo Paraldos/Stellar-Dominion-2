@@ -1,12 +1,17 @@
 export default class Research {
   content = document.querySelector(".content");
-  pages = document.querySelectorAll(".page");
+  research = document.querySelector(".research");
 
   constructor() {
-    document.addEventListener("openResearch", () => this.onOpenResearch());
+    document.addEventListener("openPage", (event) =>
+      this.onOpenResearch(event as CustomEvent)
+    );
   }
 
-  onOpenResearch() {
-    this.pages.forEach((el) => el.classList.remove("visible"));
+  onOpenResearch(event: CustomEvent) {
+    this.research?.classList.toggle(
+      "visible",
+      event.detail.window === "Research"
+    );
   }
 }
