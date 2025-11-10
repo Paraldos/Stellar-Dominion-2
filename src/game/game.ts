@@ -14,7 +14,7 @@ export default class Game {
 			<canvas class="map page"></canvas>
 		</div>
 	</div>`;
-    new Navbar();
+    new Navbar(this.gameData);
     new Map(this.gameData);
   }
 }
