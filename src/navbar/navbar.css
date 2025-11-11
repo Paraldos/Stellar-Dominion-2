@@ -11,8 +11,6 @@
 }
 
 .navbar li {
-  background-color: var(--button__background);
-  color: var(--button__text);
   height: 100%;
   padding: 0 50px;
   display: flex;
@@ -20,11 +18,4 @@
   text-transform: uppercase;
   font-weight: bold;
   border-radius: 20px;
-}
-
-.navbar li.active,
-.navbar li:hover {
-  cursor: pointer;
-  background-color: var(--button__background--hover);
-  color: var(--button__text--hover);
 }

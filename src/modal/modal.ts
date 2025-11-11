@@ -30,7 +30,7 @@ export default class Modal {
     this.modalHeader.appendChild(this.modalTitle);
 
     this.modalCloseBtn = document.createElement("button");
-    this.modalCloseBtn.classList = "modalCloseBtn";
+    this.modalCloseBtn.classList = "modalCloseBtn closeBtn";
     this.modalCloseBtn.addEventListener("click", () => this.modal.remove());
     this.modalHeader.appendChild(this.modalCloseBtn);
   }

@@ -1,7 +1,26 @@
 .saveLoadModal__slotsContainer {
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 350px;
 }
 
 .saveLoadModal__slot {
   display: flex;
+  align-items: center;
+}
+
+.saveLoadModal__slotStatus {
+  margin-right: auto;
+}
+
+.saveLoadModal__slotTitle {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.saveLoadModal__btns {
+  display: flex;
+  gap: 5px;
 }

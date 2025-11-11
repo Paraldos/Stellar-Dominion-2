@@ -37,6 +37,7 @@ export default class SaveLoadmodal extends Modal {
     slot.appendChild(slotStatus);
 
     const slotTitle = document.createElement("p");
+    slotTitle.classList = "saveLoadModal__slotTitle";
     slotTitle.innerHTML = "Slot " + index;
     slotStatus.appendChild(slotTitle);
 

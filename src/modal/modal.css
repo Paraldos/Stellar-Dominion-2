@@ -42,14 +42,3 @@
   font-weight: bold;
   text-transform: uppercase;
 }
-
-.modalCloseBtn {
-  background-color: var(--modalCloseBtn);
-  width: 25px;
-  height: 25px;
-  border-radius: 15px;
-}
-
-.modalCloseBtn:hover {
-  cursor: pointer;
-}
