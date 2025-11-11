@@ -1,6 +1,7 @@
 import Modal from "../modal/modal";
 import "./starModal.css";
 import StarData from "../data/starData";
+import ConstructBuildingModal from "../constructBuildingModal/constructBuildingModal";
 
 export default class StarModal extends Modal {
   starData: StarData;
@@ -38,8 +39,8 @@ export default class StarModal extends Modal {
     for (let i = 0; i < this.starData.size; i++) {
       const btn = document.createElement("button");
       btn.classList = "starModal__building";
-      btn.innerHTML = "Building";
-      btn.addEventListener("click", () => console.log("hi"));
+      btn.innerHTML = this.starData.buildings[i] ? "Building" : "-Empty-";
+      btn.addEventListener("click", () => new ConstructBuildingModal());
       btns.appendChild(btn);
     }
   }
