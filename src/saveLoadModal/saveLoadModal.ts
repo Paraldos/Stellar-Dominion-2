@@ -27,28 +27,43 @@ export default class SaveLoadmodal extends Modal {
     const slot = document.createElement("li");
     slot.classList = "saveLoadModal__slot";
     container.appendChild(slot);
-    this.addSlotTitle(slot, index);
-    this.addSaveBtn(slot, index);
-    this.addLoadBtn(slot, index);
+    this.addSlotStatus(slot, index);
+    this.addBtns(slot, index);
   }
 
-  addSlotTitle(slot: HTMLElement, index: number) {
+  addSlotStatus(slot: HTMLElement, index: number) {
+    const slotStatus = document.createElement("div");
+    slotStatus.classList = "saveLoadModal__slotStatus";
+    slot.appendChild(slotStatus);
+
     const slotTitle = document.createElement("p");
     slotTitle.innerHTML = "Slot " + index;
-    slot.appendChild(slotTitle);
+    slotStatus.appendChild(slotTitle);
+
+    const slotDescription = document.createElement("p");
+    slotDescription.classList = "saveLoadModal__slotDescription";
+    slotStatus.appendChild(slotDescription);
+    const allSaves = JSON.parse(
+      localStorage.getItem("stellarDominion2") || "{}"
+    );
+    const save = allSaves[index];
+    if (save == undefined) slotDescription.innerHTML += "-empty-";
+    else slotDescription.innerHTML += "WIP";
   }
 
-  addSaveBtn(slot: HTMLElement, index: number) {
+  addBtns(slot: HTMLElement, index: number) {
+    const btns = document.createElement("div");
+    btns.classList = "saveLoadModal__btns";
+    slot.appendChild(btns);
+
     const saveBtn = document.createElement("button");
     saveBtn.innerHTML = "Save";
     saveBtn.addEventListener("click", () => saveGame(index));
-    slot.appendChild(saveBtn);
-  }
+    btns.appendChild(saveBtn);
 
-  addLoadBtn(slot: HTMLElement, index: number) {
     const loadBtn = document.createElement("button");
     loadBtn.innerHTML = "Load";
     loadBtn.addEventListener("click", () => loadGame(index));
-    slot.appendChild(loadBtn);
+    btns.appendChild(loadBtn);
   }
 }
