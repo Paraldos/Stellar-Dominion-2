@@ -16,14 +16,16 @@ export default class StarModal extends Modal {
   addSoladSystemImage(): void {
     const img = document.createElement("img");
     img.classList = "starModal__solarSystem";
-    img.src = "public/solarSystem.png";
+    img.src = "./solarSystem.png";
     this.modalContent.appendChild(img);
   }
 
   addStarInformation(): void {
     const div = document.createElement("div");
     div.classList = "starModal__starInformation";
-    div.innerHTML = `<p>Star Title</p>`;
+    div.innerHTML = `
+		<p>Size: ${this.starData.size}</p>
+	`;
     this.modalContent.appendChild(div);
   }
 
@@ -33,10 +35,11 @@ export default class StarModal extends Modal {
     btns.classList = "starModal__buildings";
     this.modalContent.appendChild(btns);
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < this.starData.size; i++) {
       const btn = document.createElement("button");
       btn.classList = "starModal__building";
       btn.innerHTML = "Building";
+      btn.addEventListener("click", () => console.log("hi"));
       btns.appendChild(btn);
     }
   }

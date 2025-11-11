@@ -9,12 +9,13 @@
 .starModal__buildings {
   padding: var(--spacing-m);
   display: grid;
-  gap: var(--spacing-m);
+  gap: var(--spacing-s);
   grid-template-columns: repeat(3, 1fr);
 
   h2 {
     grid-column-start: 1;
     grid-column-end: 4;
     border-bottom: var(--spacing-xs) solid var(--txt);
+    margin: 0;
   }
 }

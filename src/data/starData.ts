@@ -2,15 +2,18 @@ import {
   getRandomArrayElement,
   getRandomNumberFromRange,
 } from "../helper/utils";
+import Building from "./building";
 
 const POSSIBLE_STAR_COLORS = ["#fff176", "#fff176", "#29b6f6", "#d01716"];
 
 export default class StarData {
   title = "star";
   index: number;
-  color: string;
+  color: string = getRandomArrayElement(POSSIBLE_STAR_COLORS);
   posX: number;
   posY: number;
+  size: number = getRandomNumberFromRange(3, 9);
+  buildings: Building[] = [];
 
   constructor(
     index: number,
@@ -22,7 +25,6 @@ export default class StarData {
     }
   ) {
     this.index = index;
-    this.color = getRandomArrayElement(POSSIBLE_STAR_COLORS);
     this.posX = column * cellSize.x + cellSize.x / 2;
     this.posX += getRandomNumberFromRange(-cellSize.x / 4, cellSize.x / 4);
     this.posY = row * cellSize.y + cellSize.y / 2;

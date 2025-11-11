@@ -25,7 +25,7 @@ export default class StarObject {
   }
 
   setupStar(): GameObj {
-    this.k.loadSprite("star", "/public/star.png");
+    this.k.loadSprite("star", "./star.png");
     return this.k.add([
       this.k.sprite("star"),
       this.k.pos(this.starData.posX, this.starData.posY),
@@ -36,7 +36,7 @@ export default class StarObject {
   }
 
   setupStarBorder(): GameObj {
-    this.k.loadSprite("starBorder", "/public/starBorder.png");
+    this.k.loadSprite("starBorder", "./starBorder.png");
     return this.star.add([
       this.k.sprite("starBorder"),
       this.k.anchor("center"),
