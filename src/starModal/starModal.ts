@@ -1,6 +1,6 @@
-import Modal from "../../modal/modal";
+import Modal from "../modal/modal";
 import "./starModal.css";
-import StarData from "../../data/starData";
+import StarData from "../data/starData";
 
 export default class StarModal extends Modal {
   starData: StarData;

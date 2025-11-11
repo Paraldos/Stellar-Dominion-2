@@ -1,6 +1,6 @@
 import type { KAPLAYCtx, GameObj } from "kaplay";
 import StarData from "../../data/starData";
-import StarModal from "../starModal/starModal";
+import StarModal from "../../starModal/starModal";
 
 export default class StarObject {
   starData: StarData;
