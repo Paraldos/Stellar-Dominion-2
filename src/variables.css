@@ -1,4 +1,6 @@
 :root {
+  --txt: #212121;
+
   --btn__background: #00acfc;
   --btn__text: white;
   --btnInverse__text: #212121;
@@ -13,4 +15,8 @@
 
   --nav-height: 75px;
   --nav-spacing: 10px;
+
+  --spacing-xs: 5px;
+  --spacing-s: 10px;
+  --spacing-m: 15px;
 }
