@@ -3,18 +3,18 @@
 }
 
 .starModal__starInformation {
-  padding: 15px;
+  padding: var(--spacing-m);
 }
 
 .starModal__buildings {
-  padding: 15px;
+  padding: var(--spacing-m);
   display: grid;
-  gap: 15px;
+  gap: var(--spacing-m);
   grid-template-columns: repeat(3, 1fr);
 
   h2 {
     grid-column-start: 1;
     grid-column-end: 4;
-    border-bottom: 5px solid var(--txt);
+    border-bottom: var(--spacing-xs) solid var(--txt);
   }
 }

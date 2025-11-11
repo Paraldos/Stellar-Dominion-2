@@ -1,8 +1,8 @@
 .saveLoadModal__slotsContainer {
-  padding: 15px;
+  padding: var(--spacing-m);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--spacing-m);
   width: 350px;
 }
 
@@ -22,5 +22,5 @@
 
 .saveLoadModal__btns {
   display: flex;
-  gap: 5px;
+  gap: var(--spacing-xs);
 }

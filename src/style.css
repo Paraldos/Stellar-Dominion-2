@@ -34,7 +34,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 15px;
+  margin: 0 0 var(--spacing-m);
 }
 
 h1 {
@@ -54,12 +54,12 @@ ul {
 
 .btn,
 button {
-  padding: 10px 25px;
+  padding: var(--spacing-s) var(--spacing-l);
   height: fit-content;
   background-color: var(--btn__background);
   color: var(--btn__text);
   border: none;
-  border-radius: 10px;
+  border-radius: var(--spacing-s);
   transition: transform, 0.2s;
   font-weight: bold;
 
@@ -76,10 +76,10 @@ button {
 
 .closeBtn {
   background-color: var(--closeBtn__background);
-  width: 25px;
-  height: 25px;
+  width: var(--spacing-l);
+  height: var(--spacing-l);
   padding: 0;
-  border-radius: 15px;
+  border-radius: var(--spacing-m);
   transition: transform, 0.2s;
 }
 

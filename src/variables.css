@@ -4,19 +4,20 @@
   --btn__background: #00acfc;
   --btn__text: white;
   --btnInverse__text: #212121;
-
   --closeBtn__background: red;
+
   --navbar__background: #00acfc;
+  --nav-height: 75px;
+  --nav-spacing: 10px;
 
   --modalBackground: rgba(0, 0, 0, 0.5);
   --modalContentBackground: white;
   --modalHeaderBackground: #00acfc;
   --modalBorder: #00acfc;
-
-  --nav-height: 75px;
-  --nav-spacing: 10px;
+  --modalHeaderHeight: 35px;
 
   --spacing-xs: 5px;
   --spacing-s: 10px;
   --spacing-m: 15px;
+  --spacing-l: 25px;
 }
