@@ -4,9 +4,10 @@ import Map from "../map/map";
 import GameData from "../data/gameData";
 
 export default class Game {
-  gameData = new GameData();
+  gameData: GameData;
 
-  constructor() {
+  constructor(gameData: GameData | null) {
+    this.gameData = gameData ? gameData : new GameData();
     document.body.innerHTML = `
 	<div class="game">
 		<ul class="navbar"></ul>
