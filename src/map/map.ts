@@ -9,7 +9,6 @@ export default class Map {
   map: HTMLCanvasElement | null = document.querySelector(".map");
   gameData: GameData;
   k: ReturnType<typeof kaplay>;
-  mapSize = { x: 600, y: 400 };
   fieldSize = { x: 0, y: 0 };
 
   constructor(gameData: GameData) {
@@ -30,7 +29,7 @@ export default class Map {
       letterbox: true,
       canvas: this.map,
       global: false,
-      scale: 20,
+      scale: 1,
     });
   }
 

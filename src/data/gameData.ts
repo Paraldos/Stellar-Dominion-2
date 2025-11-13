@@ -2,7 +2,7 @@ import StarData from "./starData";
 import { shuffleArray } from "../helper/utils.ts";
 
 export default class GameData {
-  mapSize = { x: 600, y: 400 };
+  mapSize = { x: 1920, y: 1080 };
   cellSize = { x: 0, y: 0 };
   rows = 8;
   columns = 8;

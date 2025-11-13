@@ -9,6 +9,6 @@ export default class Background {
     // game?.appendChild(background);
 
     k.loadSprite("background", "/background.png");
-    k.add([k.sprite("background"), k.anchor("center")]);
+    k.add([k.sprite("background")]);
   }
 }
