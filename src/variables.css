@@ -3,6 +3,7 @@
 
   --btn__background: #00acfc;
   --btn__text: white;
+  --btn__disabledBackground: grey;
   --btnInverse__text: #212121;
   --closeBtn__background: red;
 

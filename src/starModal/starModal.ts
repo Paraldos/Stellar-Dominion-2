@@ -39,8 +39,14 @@ export default class StarModal extends Modal {
     for (let i = 0; i < this.starData.size; i++) {
       const btn = document.createElement("button");
       btn.classList = "starModal__building";
-      btn.innerHTML = this.starData.buildings[i] ? "Building" : "-Empty-";
-      btn.addEventListener("click", () => new ConstructBuildingModal());
+      if (!this.starData.buildings[i]) {
+        btn.innerHTML = "-Empty-";
+        btn.disabled = true;
+      } else {
+        btn.innerHTML = "WIP: Building";
+        btn.disabled = false;
+        btn.addEventListener("click", () => new ConstructBuildingModal());
+      }
       btns.appendChild(btn);
     }
   }
