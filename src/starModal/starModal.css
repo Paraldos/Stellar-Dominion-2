@@ -6,11 +6,11 @@
   padding: var(--spacing-m);
 }
 
-.starModal__buildings {
+.starModal__buildingsArea {
   padding: var(--spacing-m);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-s);
-  grid-template-columns: repeat(3, 1fr);
 
   h2 {
     grid-column-start: 1;
@@ -18,4 +18,10 @@
     border-bottom: var(--spacing-xs) solid var(--txt);
     margin: 0;
   }
+}
+
+.starModal__buildingsSlots {
+  display: grid;
+  gap: var(--spacing-s);
+  grid-template-columns: repeat(3, 1fr);
 }

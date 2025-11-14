@@ -11,7 +11,7 @@ export default class StarModal extends Modal {
     this.starData = starData;
     this.addSoladSystemImage();
     this.addStarInformation();
-    this.addBuildingSlots();
+    this.addBuildingsArea();
   }
 
   addSoladSystemImage(): void {
@@ -30,11 +30,30 @@ export default class StarModal extends Modal {
     this.modalContent.appendChild(div);
   }
 
-  addBuildingSlots() {
-    const btns = document.createElement("div");
-    btns.innerHTML = `<h2>Buildings</h2>`;
-    btns.classList = "starModal__buildings";
-    this.modalContent.appendChild(btns);
+  addBuildingsArea() {
+    const buildingsArea = document.createElement("div");
+    buildingsArea.innerHTML = `<h2>Buildings</h2>`;
+    buildingsArea.classList = "starModal__buildingsArea";
+    this.modalContent.appendChild(buildingsArea);
+    this.addCurrentConstruction(buildingsArea);
+    this.addBuildingSlots(buildingsArea);
+  }
+
+  addCurrentConstruction(buildingsArea: HTMLElement) {
+    const currentConstruction = document.createElement("div");
+    currentConstruction.classList = "starModal__currentConstruction";
+    currentConstruction.innerHTML = `
+		<p>icon</p>
+		<p>name of the Building</p>
+		<p>turns left</p>
+	`;
+    buildingsArea.appendChild(currentConstruction);
+  }
+
+  addBuildingSlots(buildingsArea: HTMLElement) {
+    const buildingsSlots = document.createElement("div");
+    buildingsSlots.classList = "starModal__buildingsSlots";
+    buildingsArea.appendChild(buildingsSlots);
 
     for (let i = 0; i < this.starData.size; i++) {
       const btn = document.createElement("button");
@@ -47,7 +66,7 @@ export default class StarModal extends Modal {
         btn.disabled = false;
         btn.addEventListener("click", () => new ConstructBuildingModal());
       }
-      btns.appendChild(btn);
+      buildingsSlots.appendChild(btn);
     }
   }
 }
