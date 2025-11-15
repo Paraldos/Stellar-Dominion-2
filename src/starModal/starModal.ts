@@ -11,7 +11,7 @@ export default class StarModal extends Modal {
     this.starData = starData;
     this.addSoladSystemImage();
     this.addStarInformation();
-    this.addBuildingsArea();
+    new ConstructionArea(this.modalContent, starData);
   }
 
   addSoladSystemImage(): void {
@@ -29,31 +29,49 @@ export default class StarModal extends Modal {
 	`;
     this.modalContent.appendChild(div);
   }
+}
 
-  addBuildingsArea() {
-    const buildingsArea = document.createElement("div");
-    buildingsArea.innerHTML = `<h2>Buildings</h2>`;
-    buildingsArea.classList = "starModal__buildingsArea";
-    this.modalContent.appendChild(buildingsArea);
-    this.addCurrentConstruction(buildingsArea);
-    this.addBuildingSlots(buildingsArea);
+class ConstructionArea {
+  starData: StarData;
+  modalContent: HTMLElement;
+  constructionArea: HTMLElement;
+
+  constructor(modalContent: HTMLElement, starData: StarData) {
+    this.starData = starData;
+    this.modalContent = modalContent;
+    this.constructionArea = this.addConstructionArea();
+    this.constructionArea.innerHTML = `<h2>Buildings</h2>`;
+    // this.addCurrentConstruction();
+    this.addBuildingSlots();
   }
 
-  addCurrentConstruction(buildingsArea: HTMLElement) {
+  addConstructionArea() {
+    const buildingsArea = document.createElement("div");
+    buildingsArea.classList = "starModal__constructionArea";
+    this.modalContent.appendChild(buildingsArea);
+    return buildingsArea;
+  }
+
+  addCurrentConstruction() {
     const currentConstruction = document.createElement("div");
     currentConstruction.classList = "starModal__currentConstruction";
+    this.constructionArea.appendChild(currentConstruction);
+
+    const addConstruction = document.createElement("button");
+    addConstruction.classList = "starModal__addConstruction";
+
     currentConstruction.innerHTML = `
-		<p>icon</p>
-		<p>name of the Building</p>
-		<p>turns left</p>
-	`;
-    buildingsArea.appendChild(currentConstruction);
+    	<p>icon</p>
+    	<p>name of the Building</p>
+    	<p>turns left</p>
+    `;
+    this.constructionArea.appendChild(currentConstruction);
   }
 
-  addBuildingSlots(buildingsArea: HTMLElement) {
+  addBuildingSlots() {
     const buildingsSlots = document.createElement("div");
     buildingsSlots.classList = "starModal__buildingsSlots";
-    buildingsArea.appendChild(buildingsSlots);
+    this.constructionArea.appendChild(buildingsSlots);
 
     for (let i = 0; i < this.starData.size; i++) {
       const btn = document.createElement("button");

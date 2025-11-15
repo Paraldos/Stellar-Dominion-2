@@ -12,7 +12,7 @@ export default class StarData {
   color: string = getRandomArrayElement(POSSIBLE_STAR_COLORS);
   posX: number;
   posY: number;
-  size: number = getRandomNumberFromRange(3, 9);
+  size: number = getRandomNumberFromRange(3, 8);
   buildings: Building[] = [];
 
   constructor(

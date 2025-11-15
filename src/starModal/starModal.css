@@ -6,7 +6,8 @@
   padding: var(--spacing-m);
 }
 
-.starModal__buildingsArea {
+/* Construction Area */
+.starModal__constructionArea {
   padding: var(--spacing-m);
   display: flex;
   flex-direction: column;
@@ -21,7 +22,13 @@
 }
 
 .starModal__buildingsSlots {
+  width: 50%;
   display: grid;
   gap: var(--spacing-s);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.starModal__building {
+  padding: 0;
+  aspect-ratio: 1;
 }
