@@ -13,19 +13,16 @@
   min-height: 250px;
   border: var(--spacing-xs) solid var(--modalBorder);
   border-radius: var(--spacing-m);
-  animation: openModal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: openModal 0.2s ease-in-out forwards;
 }
 
 @keyframes openModal {
   0% {
-    transform: scale(0);
+    transform: scale(0) translateY(-500px);
     opacity: 0;
   }
-  70% {
-    transform: scale(1.1);
-  }
   100% {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
     opacity: 1;
   }
 }
