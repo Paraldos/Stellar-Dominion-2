@@ -113,7 +113,10 @@ class ConstructionArea {
     // content
     const btn = document.createElement("button");
     btn.classList = "starModal__constructionOption";
-    btn.innerHTML = `<img src="${building.imageSrc}" alt="${building.title}" />`;
+    btn.innerHTML = `
+	<img src="${building.imageSrc}" alt="${building.title}" />
+    <img class="starModal__upImage" src="/public/chevronUp.svg" alt="${building.title}" />
+	`;
     this.options.appendChild(btn);
     this.updateOption(btn);
     // logic
