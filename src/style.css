@@ -79,7 +79,7 @@ button {
     background-color: var(--btn__hoverBackground);
     border-radius: var(--spacing-s);
     transform: scaleY(0);
-    transform-origin: top;
+    transform-origin: center;
     transition: all 0.2s;
     z-index: 1;
   }

@@ -33,10 +33,22 @@
   aspect-ratio: 1;
 }
 
+.starModal__constructionQueue {
+  display: grid;
+  gap: var(--spacing-s);
+  grid-template-columns: repeat(4, 1fr);
+  min-height: 75px;
+  align-items: center;
+
+  p {
+    font-weight: bold;
+  }
+}
+
 .starModal__constructionOptions {
   display: grid;
   gap: var(--spacing-s);
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .starModal__queueItem,
@@ -45,10 +57,23 @@
   gap: var(--spacing-m);
   justify-content: center;
   align-items: center;
+  padding: var(--spacing-s);
 
   img {
     height: 100%;
     aspect-ratio: 1;
+  }
+
+  .starModal__xImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all 0.2s;
+    transform: translate(-50%, -50%) scale(1, 0);
+  }
+
+  &:hover > .starModal__xImage {
+    transform: translate(-50%, -50%) scale(0.8, 0.8);
   }
 
   span {

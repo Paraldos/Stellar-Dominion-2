@@ -46,7 +46,7 @@ class ConstructionArea {
 		</div>`;
     this.queue = document.querySelector(".starModal__constructionQueue");
     this.options = document.querySelector(".starModal__constructionOptions");
-    this.addQueeItems();
+    this.addQueueItems();
     listOfBuildings.forEach((building) => this.addOption(building));
   }
 
@@ -70,13 +70,16 @@ class ConstructionArea {
   //     }
   //   }
 
-  addQueeItems() {
+  addQueueItems() {
     if (this.queue == null) return;
-    this.queue.innerHTML = "";
-    this.starData.buildings.forEach((building) => this.addQueueItem(building));
+    this.queue.innerHTML = "<p>Construction Queue:</p>";
+    this.starData.buildings.forEach((building, index) => {
+      if (building.constructionProgress >= 100) return;
+      this.addQueueItem(building, index);
+    });
   }
 
-  addQueueItem(building: Building) {
+  addQueueItem(building: Building, index: number) {
     // guard
     if (this.queue == null) return;
     // content
@@ -84,8 +87,23 @@ class ConstructionArea {
     btn.classList = "starModal__queueItem";
     btn.innerHTML = `
 	<img src="${building.imageSrc}" alt="${building.title}" />
-	<span>Progress: ${building.constructionProgress}</span>`;
+	<span>Progress: ${building.constructionProgress}</span>
+    <img class="starModal__xImage" src="/public/x.svg" alt="${building.title}" />`;
     this.queue.appendChild(btn);
+    // logic
+    btn.addEventListener("click", () => {
+      this.starData.buildings.splice(index, 1);
+      document.dispatchEvent(new CustomEvent("updateConstructionOptions"));
+      this.addQueueItems();
+    });
+  }
+
+  getBuildingsInQueue() {
+    let count = 0;
+    for (const b of this.starData.buildings) {
+      if (b.constructionProgress < 100) count++;
+    }
+    return count;
   }
 
   addOption(building: Building) {
@@ -97,12 +115,20 @@ class ConstructionArea {
     btn.classList = "starModal__constructionOption";
     btn.innerHTML = `<img src="${building.imageSrc}" alt="${building.title}" />`;
     this.options.appendChild(btn);
-
+    this.updateOption(btn);
     // logic
     btn.addEventListener("click", () => {
       const newBuilding = structuredClone(building);
       this.starData.buildings.push(newBuilding);
-      this.addQueeItems();
+      this.addQueueItems();
+      this.updateOption(btn);
     });
+    document.addEventListener("updateConstructionOptions", () =>
+      this.updateOption(btn)
+    );
+  }
+
+  updateOption(option: HTMLButtonElement) {
+    option.disabled = this.getBuildingsInQueue() >= 3;
   }
 }
