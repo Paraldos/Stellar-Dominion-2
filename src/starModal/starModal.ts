@@ -42,7 +42,8 @@ class ConstructionArea {
     this.constructionArea = this.addConstructionArea();
     this.constructionArea.innerHTML = `<h2>Buildings</h2>`;
     // this.addCurrentConstruction();
-    this.addBuildingSlots();
+    this.addBuildings();
+    this.addOptions();
   }
 
   addConstructionArea() {
@@ -68,10 +69,10 @@ class ConstructionArea {
     this.constructionArea.appendChild(currentConstruction);
   }
 
-  addBuildingSlots() {
-    const buildingsSlots = document.createElement("div");
-    buildingsSlots.classList = "starModal__buildingsSlots";
-    this.constructionArea.appendChild(buildingsSlots);
+  addBuildings() {
+    const buildings = document.createElement("div");
+    buildings.classList = "starModal__buildings";
+    this.constructionArea.appendChild(buildings);
 
     for (let i = 0; i < this.starData.size; i++) {
       const btn = document.createElement("button");
@@ -84,7 +85,13 @@ class ConstructionArea {
         btn.disabled = false;
         btn.addEventListener("click", () => new ConstructBuildingModal());
       }
-      buildingsSlots.appendChild(btn);
+      buildings.appendChild(btn);
     }
+  }
+
+  addOptions() {
+    const options = document.createElement("div");
+    options.classList = "starModal__options";
+    this.constructionArea.appendChild(options);
   }
 }
