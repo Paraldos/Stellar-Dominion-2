@@ -39,11 +39,11 @@ class ConstructionArea {
   constructor(modalContent: HTMLElement, starData: StarData) {
     this.starData = starData;
     modalContent.innerHTML += `
-		<div class="starModal__constructionArea">
-			<h2>Construction</h2>
-			<div class="starModal__constructionQueue"></div>
-			<div class="starModal__constructionOptions"></div>
-		</div>`;
+    	<div class="starModal__constructionArea">
+    		<h2>Construction</h2>
+    		<div class="starModal__constructionQueue"></div>
+    		<div class="starModal__constructionOptions"></div>
+    	</div>`;
     this.queue = document.querySelector(".starModal__constructionQueue");
     this.options = document.querySelector(".starModal__constructionOptions");
     this.addQueueItems();
