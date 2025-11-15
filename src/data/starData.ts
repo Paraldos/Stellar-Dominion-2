@@ -2,7 +2,7 @@ import {
   getRandomArrayElement,
   getRandomNumberFromRange,
 } from "../helper/utils";
-import Building from "./building";
+import { Building } from "./building";
 
 const POSSIBLE_STAR_COLORS = ["#fff176", "#fff176", "#29b6f6", "#d01716"];
 

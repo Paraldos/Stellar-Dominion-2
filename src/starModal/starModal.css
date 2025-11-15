@@ -32,3 +32,27 @@
   padding: 0;
   aspect-ratio: 1;
 }
+
+.starModal__constructionOptions {
+  display: grid;
+  gap: var(--spacing-s);
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.starModal__constructionOption {
+  aspect-ratio: 1;
+  position: relative;
+
+  img {
+    position: relative;
+    width: 90%;
+    aspect-ratio: 1;
+  }
+
+  span {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

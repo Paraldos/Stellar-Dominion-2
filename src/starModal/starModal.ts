@@ -2,6 +2,7 @@ import Modal from "../modal/modal";
 import "./starModal.css";
 import StarData from "../data/starData";
 import ConstructBuildingModal from "../constructBuildingModal/constructBuildingModal";
+import { listOfBuildings } from "../data/building";
 
 export default class StarModal extends Modal {
   starData: StarData;
@@ -90,8 +91,17 @@ class ConstructionArea {
   }
 
   addOptions() {
-    const options = document.createElement("div");
-    options.classList = "starModal__options";
-    this.constructionArea.appendChild(options);
+    const constructionOptions = document.createElement("div");
+    constructionOptions.classList = "starModal__constructionOptions";
+    this.constructionArea.appendChild(constructionOptions);
+
+    listOfBuildings.forEach((building) => {
+      const btn = document.createElement("button");
+      btn.classList = "starModal__constructionOption";
+      btn.innerHTML = `
+	  	<img src="${building.imageSrc}" alt="${building.title}" />
+		<span>${building.title}</span>`;
+      constructionOptions.appendChild(btn);
+    });
   }
 }
