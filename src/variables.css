@@ -2,10 +2,16 @@
   --txt: #212121;
 
   --btn__background: #00acfc;
+  --btn__hoverBackground: #38c0ff;
   --btn__text: white;
   --btn__disabledBackground: grey;
+
+  --btnInverse__background: white;
   --btnInverse__text: #212121;
+  --btnInverse__hoverBackground: #edf9ff;
+
   --closeBtn__background: red;
+  --closeBtn__hoverBackground: rgb(255, 69, 69);
 
   --navbar__background: #00acfc;
   --nav-height: 75px;

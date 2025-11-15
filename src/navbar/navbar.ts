@@ -21,7 +21,7 @@ export default class Navbar {
   addBtn(text: string): HTMLElement {
     const li = document.createElement("li");
     li.classList = "btn inverseBtn";
-    li.innerHTML = text;
+    li.innerHTML = `<span>${text}</span>`;
     this.navbar?.appendChild(li);
     return li;
   }
