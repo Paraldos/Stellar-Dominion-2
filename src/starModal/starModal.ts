@@ -1,8 +1,7 @@
 import Modal from "../modal/modal";
 import "./starModal.css";
 import StarData from "../data/starData";
-import ConstructBuildingModal from "../constructBuildingModal/constructBuildingModal";
-import { listOfBuildings } from "../data/building";
+import { Building, listOfBuildings } from "../data/building";
 
 export default class StarModal extends Modal {
   starData: StarData;
@@ -34,74 +33,76 @@ export default class StarModal extends Modal {
 
 class ConstructionArea {
   starData: StarData;
-  modalContent: HTMLElement;
-  constructionArea: HTMLElement;
+  queue: HTMLElement | null;
+  options: HTMLElement | null;
 
   constructor(modalContent: HTMLElement, starData: StarData) {
     this.starData = starData;
-    this.modalContent = modalContent;
-    this.constructionArea = this.addConstructionArea();
-    this.constructionArea.innerHTML = `<h2>Buildings</h2>`;
-    // this.addCurrentConstruction();
-    this.addBuildings();
-    this.addOptions();
+    modalContent.innerHTML += `
+		<div class="starModal__constructionArea">
+			<h2>Construction</h2>
+			<div class="starModal__constructionQueue"></div>
+			<div class="starModal__constructionOptions"></div>
+		</div>`;
+    this.queue = document.querySelector(".starModal__constructionQueue");
+    this.options = document.querySelector(".starModal__constructionOptions");
+    this.addQueeItems();
+    listOfBuildings.forEach((building) => this.addOption(building));
   }
 
-  addConstructionArea() {
-    const buildingsArea = document.createElement("div");
-    buildingsArea.classList = "starModal__constructionArea";
-    this.modalContent.appendChild(buildingsArea);
-    return buildingsArea;
+  //   addBuildings() {
+  //     const buildings = document.createElement("div");
+  //     buildings.classList = "starModal__buildings";
+  //     this.constructionArea.appendChild(buildings);
+
+  //     for (let i = 0; i < this.starData.size; i++) {
+  //       const btn = document.createElement("button");
+  //       btn.classList = "starModal__building";
+  //       if (!this.starData.buildings[i]) {
+  //         btn.innerHTML = "-Empty-";
+  //         btn.disabled = true;
+  //       } else {
+  //         btn.innerHTML = "WIP: Building";
+  //         btn.disabled = false;
+  //         btn.addEventListener("click", () => new ConstructBuildingModal());
+  //       }
+  //       buildings.appendChild(btn);
+  //     }
+  //   }
+
+  addQueeItems() {
+    if (this.queue == null) return;
+    this.queue.innerHTML = "";
+    this.starData.buildings.forEach((building) => this.addQueueItem(building));
   }
 
-  addCurrentConstruction() {
-    const currentConstruction = document.createElement("div");
-    currentConstruction.classList = "starModal__currentConstruction";
-    this.constructionArea.appendChild(currentConstruction);
-
-    const addConstruction = document.createElement("button");
-    addConstruction.classList = "starModal__addConstruction";
-
-    currentConstruction.innerHTML = `
-    	<p>icon</p>
-    	<p>name of the Building</p>
-    	<p>turns left</p>
-    `;
-    this.constructionArea.appendChild(currentConstruction);
+  addQueueItem(building: Building) {
+    // guard
+    if (this.queue == null) return;
+    // content
+    const btn = document.createElement("button");
+    btn.classList = "starModal__queueItem";
+    btn.innerHTML = `
+	<img src="${building.imageSrc}" alt="${building.title}" />
+	<span>Progress: ${building.constructionProgress}</span>`;
+    this.queue.appendChild(btn);
   }
 
-  addBuildings() {
-    const buildings = document.createElement("div");
-    buildings.classList = "starModal__buildings";
-    this.constructionArea.appendChild(buildings);
+  addOption(building: Building) {
+    // guard
+    if (this.options == null) return;
+    if (this.queue == null) return;
+    // content
+    const btn = document.createElement("button");
+    btn.classList = "starModal__constructionOption";
+    btn.innerHTML = `<img src="${building.imageSrc}" alt="${building.title}" />`;
+    this.options.appendChild(btn);
 
-    for (let i = 0; i < this.starData.size; i++) {
-      const btn = document.createElement("button");
-      btn.classList = "starModal__building";
-      if (!this.starData.buildings[i]) {
-        btn.innerHTML = "-Empty-";
-        btn.disabled = true;
-      } else {
-        btn.innerHTML = "WIP: Building";
-        btn.disabled = false;
-        btn.addEventListener("click", () => new ConstructBuildingModal());
-      }
-      buildings.appendChild(btn);
-    }
-  }
-
-  addOptions() {
-    const constructionOptions = document.createElement("div");
-    constructionOptions.classList = "starModal__constructionOptions";
-    this.constructionArea.appendChild(constructionOptions);
-
-    listOfBuildings.forEach((building) => {
-      const btn = document.createElement("button");
-      btn.classList = "starModal__constructionOption";
-      btn.innerHTML = `
-	  	<img src="${building.imageSrc}" alt="${building.title}" />
-		<span>${building.title}</span>`;
-      constructionOptions.appendChild(btn);
+    // logic
+    btn.addEventListener("click", () => {
+      const newBuilding = structuredClone(building);
+      this.starData.buildings.push(newBuilding);
+      this.addQueeItems();
     });
   }
 }

@@ -39,20 +39,23 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
+.starModal__queueItem,
 .starModal__constructionOption {
-  aspect-ratio: 1;
-  position: relative;
+  display: flex;
+  gap: var(--spacing-m);
+  justify-content: center;
+  align-items: center;
 
   img {
-    position: relative;
-    width: 100%;
+    height: 100%;
     aspect-ratio: 1;
   }
 
   span {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: left;
   }
+}
+
+.starModal__constructionOption {
+  aspect-ratio: 1;
 }
