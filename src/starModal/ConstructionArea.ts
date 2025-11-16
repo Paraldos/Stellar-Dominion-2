@@ -74,7 +74,7 @@ export default class ConstructionArea {
       const newBuilding = structuredClone(building);
       this.starData.buildings.push(newBuilding);
       this.addQueueItems();
-      this.updateOption(btn);
+      document.dispatchEvent(new CustomEvent("updateConstructionOptions"));
     });
     document.addEventListener("updateConstructionOptions", () =>
       this.updateOption(btn)
