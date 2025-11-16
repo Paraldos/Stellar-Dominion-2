@@ -7,11 +7,13 @@ export default class Navbar {
   navbar = document.querySelector(".navbar");
   map;
   saveLoad;
+  nextRound;
 
   constructor(gameData: GameData) {
     this.gameData = gameData;
     this.map = this.addBtn("Map");
     this.saveLoad = this.addBtn("Save / Load");
+    this.nextRound = this.addBtn("Next Round");
     this.saveLoad.addEventListener(
       "click",
       () => new SaveLoadmodal(this.gameData)

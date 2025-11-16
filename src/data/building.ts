@@ -10,6 +10,6 @@ export class Building {
 }
 
 export const listOfBuildings = [
-  new Building("Farm", "./public/farm.svg"),
   new Building("Capitol", "./public/capitol.svg"),
+  new Building("Farm", "./public/farm.svg"),
 ];
