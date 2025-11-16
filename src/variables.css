@@ -1,9 +1,10 @@
 :root {
-  --txt: #212121;
+  --txt: white;
 
-  --btn__background: #00acfc;
-  --btn__hoverBackground: #38c0ff;
+  --btn__background: #1a5fb4ff;
+  --btn__hoverBackground: #3584e4ff;
   --btn__text: white;
+  --btn__hoverText: black;
   --btn__disabledBackground: grey;
 
   --btnInverse__background: white;
@@ -13,14 +14,13 @@
   --closeBtn__background: red;
   --closeBtn__hoverBackground: rgb(255, 69, 69);
 
-  --navbar__background: #00acfc;
+  --navbar__background: #1a5fb4ff;
   --nav-height: 75px;
   --nav-spacing: 10px;
 
   --modalBackground: rgba(0, 0, 0, 0.5);
-  --modalContentBackground: white;
-  --modalHeaderBackground: #00acfc;
-  --modalBorder: #00acfc;
+  --modalContentBackground: rgb(15, 15, 20);
+  --modalBorder: #1a5fb4ff;
   --modalHeaderHeight: 35px;
 
   --spacing-xs: 5px;

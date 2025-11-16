@@ -58,12 +58,12 @@ export default class SaveLoadmodal extends Modal {
     slot.appendChild(btns);
 
     const saveBtn = document.createElement("button");
-    saveBtn.innerHTML = "Save";
+    saveBtn.innerHTML = "<span>Save</span>";
     saveBtn.addEventListener("click", () => saveGame(index));
     btns.appendChild(saveBtn);
 
     const loadBtn = document.createElement("button");
-    loadBtn.innerHTML = "Load";
+    loadBtn.innerHTML = "<span>Load</span>";
     loadBtn.addEventListener("click", () => loadGame(index));
     btns.appendChild(loadBtn);
   }

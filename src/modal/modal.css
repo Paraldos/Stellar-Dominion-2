@@ -8,12 +8,12 @@
 }
 
 .modalContent {
+  position: relative;
   background-color: var(--modalContentBackground);
   min-width: 250px;
   min-height: 250px;
-  border: var(--spacing-xs) solid var(--modalBorder);
-  border-radius: var(--spacing-m);
   animation: openModal 0.2s ease-in-out forwards;
+  border: 5px solid var(--modalBorder);
 }
 
 @keyframes openModal {
@@ -30,7 +30,7 @@
 .modalHeader {
   width: 100%;
   height: var(--modalHeaderHeight);
-  background-color: var(--modalHeaderBackground);
+  background-color: var(--modalBorder);
   display: flex;
   justify-content: space-between;
   align-items: center;

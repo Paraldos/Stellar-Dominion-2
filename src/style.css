@@ -9,7 +9,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--text-primary);
+  color: var(--txt);
   background-color: var(--bg-default);
 
   font-synthesis: none;
@@ -25,7 +25,7 @@ body {
   min-height: 100%;
   min-width: 100%;
   background-color: #000000;
-  color: var(--text);
+  color: var(--txt);
 }
 
 h1,
@@ -59,7 +59,6 @@ button {
   background-color: var(--btn__background);
   color: var(--btn__text);
   border: none;
-  border-radius: var(--spacing-s);
   font-weight: bold;
   position: relative;
   overflow: hidden;
@@ -78,7 +77,6 @@ button {
     height: 100%;
     opacity: 0;
     background-color: var(--btn__hoverBackground);
-    border-radius: var(--spacing-s);
     transform: scaleY(0);
     transform-origin: center;
     transition: all 0.2s;
@@ -87,6 +85,7 @@ button {
 
   &:not(:disabled):hover {
     cursor: pointer;
+    color: var(--btn__hoverText);
 
     &:before {
       opacity: 1;
