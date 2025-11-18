@@ -14,4 +14,5 @@ export class Building {
 export const listOfBuildings = [
   new Building("Capitol", "./public/capitol.svg", true),
   new Building("Farm", "./public/farm.svg", false),
+  new Building("Factory", "./public/farm.svg", false),
 ];
