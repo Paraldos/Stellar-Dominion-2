@@ -18,6 +18,9 @@ export default class Navbar {
       "click",
       () => new SaveLoadmodal(this.gameData)
     );
+    this.nextRound.addEventListener("click", () => {
+      console.log("click");
+    });
   }
 
   addBtn(text: string): HTMLElement {
