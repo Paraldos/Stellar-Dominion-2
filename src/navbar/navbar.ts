@@ -19,7 +19,7 @@ export default class Navbar {
       () => new SaveLoadmodal(this.gameData)
     );
     this.nextRound.addEventListener("click", () => {
-      console.log("click");
+      document.dispatchEvent(new CustomEvent("nextRound"));
     });
   }
 
