@@ -14,6 +14,9 @@ export default class StarModal extends Modal {
     this.addStarInformation();
     this.addDistricts();
     new ConstructionArea(this.modalContent, starData);
+    document.addEventListener("nextRound", () => {
+      console.log("bert");
+    });
   }
 
   addSoladSystemImage(): void {
